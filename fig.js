@@ -1,7 +1,21 @@
 var lienzo = document.getElementById("lienzo"); 
 var cd = lienzo.getContext("2d");
+
 var lienzo2 = document.getElementById("lienzo2"); 
 var cd2 = lienzo2.getContext("2d");
+
+var lienzo3 = document.getElementById("lienzo3"); 
+var cd3 = lienzo3.getContext("2d");
+
+var lienzo4 = document.getElementById("lienzo4"); 
+var cd4 = lienzo4.getContext("2d");
+
+var lienzo5 = document.getElementById("lienzo5"); 
+var cd5 = lienzo5.getContext("2d");
+
+var x = 1070;
+var y = 550;
+
 function exhibirLineas(){
     var x = 20;
     var y = 20;
@@ -38,8 +52,6 @@ function exhibirLineas(){
         cd2.lineTo(x, pey);
         cd2.moveTo(pex+10,y);
         cd2.lineTo(pex, y);
-        //cd2.fillText(Number, pex+11, y+2, 200);
-        //cd2.fillText(Number, x, pey+20, 200);
         cd2.stroke();
         y = y + 30;    
         x = x + 30;    
@@ -70,6 +82,38 @@ function GetData(){
     X4 = document.getElementById('X4').value;
     Hallar(A, B, C, D, E, F, X1, X2, X3, X4, nuevoArray)
 }
+function Linea1(x3, x4, arr){
+    cd5.strokeStyle = 'Green';
+    cd5.lineWidth = 2;
+    px1 = x/2 + (30 * x3 ) - 5
+    py1 = y/2 - (30 * (arr[4]*1) ) - 15
+    px2 = x/2 + (30 * x4 ) - 5
+    py2 = y/2 - (30 * (arr[5]*1) ) - 15
+    cd5.moveTo(px2, py2);
+    cd5.lineTo(px1, py1);
+    cd5.stroke();
+}
+function Linea2(x1, x2, arr){
+    cd4.strokeStyle = 'Blue';
+    cd4.lineWidth = 2;
+    px1 = x/2 + (30 * x1 ) - 5
+    py1 = y/2 - (30 * arr[2]) - 15
+    px2 = x/2 + (30 * x2 ) - 5
+    py2 = y/2 - (30 * arr[3] ) - 15
+    cd4 .moveTo(px2, py2);
+    cd4.lineTo(px1, py1);
+    cd4.stroke();
+}
+function Punto(arr){
+    p1 = x/2 + (30 * arr[1]) - 5
+    p2 = y/2 - (30 * arr[0]) - 15
+    var r = 10;
+    cd3.strokeStyle = "#006400";
+    cd3.fillStyle = "Red";
+    cd3.lineWidth = 5;
+    cd3.arc(p1, p2, r,0,2*Math.PI);
+    cd3.fill();
+}
 function Hallar(a, b, c, d, e, f, x1, x2, x3, x4, arr){
 
         arr[0] = (a*f-d*c) / (a*e-d*b); //valor de Y
@@ -79,26 +123,35 @@ function Hallar(a, b, c, d, e, f, x1, x2, x3, x4, arr){
         arr[4] = (f - d*x3) / e; //valor de y3
         arr[5] = (f - d*x4) / e; //valor de y4
 
+        Linea1(x3, x4, arr);
+        Linea2(x1, x2, arr);
+        Punto(arr);
         
         document.getElementById('REC1').innerHTML = a+"x + "+b+"y = "+c;
         document.getElementById('REC2').innerHTML = d+"x + "+e+"y = "+f;
-        //document.getElementById('RX').innerHTML = "P3(x3, y3) = " + "(" + x3 + "," + arr[4] + ")";
-        //document.getElementById('RY').innerHTML = "P4(x4, y4) = " + "(" + x4 + "," + arr[5] + ")";
+        console.log("P3(x3, y3) = " + "(" + x3 + "," + arr[4] + ")");
+        console.log("P4(x4, y4) = " + "(" + x4 + "," + arr[5] + ")");
         document.getElementById('RX').innerHTML = "X: "+arr[1];
         document.getElementById('RY').innerHTML = "Y: "+arr[0];
 
         if((a*f-d*c) == 0 && (a*e-d*b) == 0)
-        {
                 document.getElementById('contenido').innerHTML = "Tiende a ser infinito";
-        }
         else if((a*e-d*b) == 0)
-        {       
                 document.getElementById('contenido').innerHTML = "No hay solucion";
-        }
         else if((arr[0]) != 0)
         {
-                document.getElementById('contenido').innerHTML = "(x, y) = " + "(" + arr[1] + "," + arr[0] + ")"; 
+                document.getElementById('contenido').innerHTML = "punto de interseccion = " + "(" + arr[1] + "," + arr[0] + ")";
+                p1 = x/2 + (30 * arr[1]) - 5
+                p2 = y/2 - (30 * arr[0]) - 15
+                cd2.fillText("(" + arr[1] + "," + arr[0] + ")", p1+15, p2, 200);
+
+                px2 = x/2 + (30 * x2 ) - 5//linea 2
+                py2 = y/2 - (30 * arr[3] ) - 15
+                cd2.fillText(a + "x + " + b + "y = " + c, px2+10, py2, 200); 
+
+                px2 = x/2 + (30 * x4 ) - 5//linea 1
+                py2 = y/2 - (30 * (arr[5]*1) ) - 15
+                cd2.fillText(d + "x + " + e + "y = " + f, px2+10, py2, 200);
         }
 }
-
 window.onload = exhibirLineas();

@@ -19,32 +19,32 @@
                     <a>dx + ey = f(Ec. 2)</a>
                     <br /><br /><br />
                     <a>a: </a>
-                    <input id="A" style="width: 10%;" value="2"/>
+                    <input id="A" style="width: 10%;" />
                     <a>b: </a>
-                    <input id="B" style="width: 10%;" value="-1"/>
+                    <input id="B" style="width: 10%;" />
                     <a>c: </a>
-                    <input id="C" style="width: 10%;" value="5"/>
+                    <input id="C" style="width: 10%;" />
                     <br /><br />
                     <a>d: </a>
-                    <input id="D" style="width: 10%;" value="1"/>
+                    <input id="D" style="width: 10%;" />
                     <a>e: </a>
-                    <input id="E" style="width: 10%;" value="4"/>
+                    <input id="E" style="width: 10%;" />
                     <a>f: </a>
-                    <input id="F" style="width: 10%;" value="7"/>
+                    <input id="F" style="width: 10%;" />
                     <br /><br />
                     <a>Intervalo [x1, x2] en X para Ec. 1:</a>
                     <br />
                     <a>x1: </a>
-                    <input id="X1" style="width: 10%;" value="-2"/>
+                    <input id="X1" style="width: 10%;" />
                     <a>x2: </a>
-                    <input id="X2" style="width: 10%;" value="5"/>
+                    <input id="X2" style="width: 10%;" />
                     <br /><br />
                     <a>Intervalo [x3, x4] en X para Ec. 2:</a>
                     <br />
                     <a>x3: </a>
-                    <input id="X3" style="width: 10%;" value="-7"/>
+                    <input id="X3" style="width: 10%;" />
                     <a>x4: </a>
-                    <input id="X4" style="width: 10%;" value="12"/>
+                    <input id="X4" style="width: 10%;" />
                     <br/><br/>
                     <button onclick="GetData()" type="button">Calcular X y Y!</button>
                     <br /><br />
@@ -59,6 +59,24 @@
             </div>
             <div class="w3-col s9 w3-white w3-center">
                 <canvas 
+                    id="lienzo5"
+                    style=" position:absolute"
+                    width="1070"
+                    height="550"
+                ></canvas>
+                <canvas 
+                    id="lienzo4"
+                    style=" position:absolute"
+                    width="1070"
+                    height="550"
+                ></canvas>
+                <canvas 
+                    id="lienzo3"
+                    style=" position:absolute"
+                    width="1070"
+                    height="550"
+                ></canvas>
+                <canvas 
                     id="lienzo2"
                     style=" position:absolute"
                     width="1070"
@@ -68,7 +86,6 @@
                     id="lienzo"
                     width="1070"
                     height="550"
-                    style="color: aqua;"
                 ></canvas>
                 <div id="contenido" style="color: black;">
                 </div>
