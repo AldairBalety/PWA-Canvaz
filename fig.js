@@ -15,12 +15,12 @@ var cd5 = lienzo5.getContext("2d");
 
 var x = 1070;
 var y = 550;
+var Ex = 1060;
+var Ey = 540;
 
 function exhibirLineas(){
     var x = 20;
     var y = 20;
-    var Ex = 1060;
-    var Ey = 540;
     while(x <= Ex || y <= Ey){
         cd.strokeStyle = 'Cyan';
         cd.moveTo(x, 0);
@@ -56,16 +56,29 @@ function exhibirLineas(){
         y = y + 30;    
         x = x + 30;    
     }
+    Numero_PlanoY();
+}
+function Numero_PlanoY(){
+    var pex = Ex / 2;
+    var pey = Ey / 2;
     x = 20;
     y = 20;
-    var Number = 0;
-    while(x <= Ex || y <= Ey){
-        cd2.fillText("-"+Number, pex+12, pey-28+y, 200);
-        cd2.fillText("-"+Number, pex+12, pey+28-y, 200);        
+    var Number = 1;
+    while(y <= Ey){
+        cd2.fillText("-"+Number, pex+14, pey+2+y, 200); //y+
+        cd2.fillText(Number, pex+14, pey-17-y, 200); //y-
         Number = Number+1;
-        y = y + 30;    
+        y = y + 30;      
+    }
+    Number = 1;
+    while(x <= Ex+150){
+        cd2.fillText(Number, pex+6+x, pey+10, 200); //x+
+        cd2.fillText("-"+Number, pex-16-x, pey+10, 200); //x-
+        Number = Number+1;
         x = x + 30;   
     }
+    cd2.fillText("0", pex+5, pey-15, 200); //0
+    cd2.fillText("0", pex-15, pey+5, 200); //0
 }
 function GetData(){
     var A, B, C, D, E, F, X1, X2, X3, X4;
@@ -115,6 +128,11 @@ function Punto(arr){
     cd3.fill();
 }
 function Hallar(a, b, c, d, e, f, x1, x2, x3, x4, arr){
+
+        debugger
+        cd3.clearRect(0, 0, x, y);
+        cd4.clearRect(0, 0, x, y);
+        cd5.clearRect(0, 0, x, y);
 
         arr[0] = (a*f-d*c) / (a*e-d*b); //valor de Y
         arr[1] = (c - b*arr[0]) / a; //valor de X

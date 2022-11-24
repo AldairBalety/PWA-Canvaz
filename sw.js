@@ -11,7 +11,8 @@ self.addEventListener(
                     cache.addAll(
                         [
                             'fig.js',
-                            'w3.css'
+                            'w3.css',
+                            'icon/icono.jpg'
                         ]
                     );        
                 }

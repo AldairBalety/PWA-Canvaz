@@ -5,11 +5,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="w3.css">
-        <!-- <link rel="manifest" href="manifiesto.json"> -->
+        <link rel="manifest" href="manifest.json">
     </head>
     <body>
         <div class="w3-row">
-            <div class="w3-col s12 w3-amber w3-center"><p>Figuras</p></div>        
+            <div class="w3-col s12 w3-amber w3-center">
+                <p>Resuelve un sistema de dos ecueaciones lineales con dos incognitas por los métodos de sustitucion y gráfico</p>
+            </div>        
         </div>
         <div class="w3-row">
             <div class="w3-col s3 w3-green w3-center" style="height:800px;">
@@ -48,13 +50,13 @@
                     <br/><br/>
                     <button onclick="GetData()" type="button">Calcular X y Y!</button>
                     <br /><br />
-                    <a id="REC1">2x + -1y = 5</a>
+                    <a id="REC1"></a>
                     <br />
-                    <a id="REC2">1x + 4y = 7</a>
+                    <a id="REC2"></a>
                     <br /><br />
-                    <a id="RX">X: 3</a>
+                    <a id="RX">X: </a>
                     <br />
-                    <a id="RY">Y: 1</a>
+                    <a id="RY">Y: </a>
                 </p>
             </div>
             <div class="w3-col s9 w3-white w3-center">
@@ -94,7 +96,7 @@
         <script src="fig.js"></script>
         <script>
             if('serviceWorker' in navigator){
-                /*navigator.serviceWorker.register('sw.js')
+                navigator.serviceWorker.register('sw.js')
                 .then(
                     function(registration){
                         alert('Reg. satisfactorio del sw');
@@ -105,7 +107,7 @@
                         alert('El SW no se registró');
                         console.log('El SW no se registró', err);
                     }
-                );*/
+                );
             }
         </script>
     </body>
