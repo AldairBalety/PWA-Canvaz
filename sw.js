@@ -12,6 +12,7 @@ self.addEventListener(
                         [
                             'fig.js',
                             'w3.css',
+                            'manifest.json',
                             'icon/icono.jpg'
                         ]
                     );        

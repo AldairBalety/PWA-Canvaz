@@ -13,6 +13,9 @@ var cd4 = lienzo4.getContext("2d");
 var lienzo5 = document.getElementById("lienzo5"); 
 var cd5 = lienzo5.getContext("2d");
 
+var lienzo6 = document.getElementById("lienzo6"); 
+var cd6 = lienzo6.getContext("2d");
+
 var x = 1070;
 var y = 550;
 var Ex = 1060;
@@ -98,10 +101,10 @@ function GetData(){
 function Linea1(x3, x4, arr){
     cd5.strokeStyle = 'Green';
     cd5.lineWidth = 2;
-    px1 = x/2 + (30 * x3 ) - 5
-    py1 = y/2 - (30 * (arr[4]*1) ) - 15
-    px2 = x/2 + (30 * x4 ) - 5
-    py2 = y/2 - (30 * (arr[5]*1) ) - 15
+    px1 = x/2 + (30 * x3 )-80
+    py1 = y/2 - (30 * (arr[4]) )-20
+    px2 = x/2 + (30 * x4 )-80
+    py2 = y/2 - (30 * (arr[5]) )-20
     cd5.moveTo(px2, py2);
     cd5.lineTo(px1, py1);
     cd5.stroke();
@@ -109,17 +112,18 @@ function Linea1(x3, x4, arr){
 function Linea2(x1, x2, arr){
     cd4.strokeStyle = 'Blue';
     cd4.lineWidth = 2;
-    px1 = x/2 + (30 * x1 ) - 5
-    py1 = y/2 - (30 * arr[2]) - 15
-    px2 = x/2 + (30 * x2 ) - 5
-    py2 = y/2 - (30 * arr[3] ) - 15
+    px1 = x/2 + (30 * x1 )-80
+    py1 = y/2 - (30 * arr[2])-20
+    px2 = x/2 + (30 * x2 )-80
+    py2 = y/2 - (30 * arr[3] )-20
     cd4 .moveTo(px2, py2);
     cd4.lineTo(px1, py1);
     cd4.stroke();
 }
 function Punto(arr){
-    p1 = x/2 + (30 * arr[1]) - 5
-    p2 = y/2 - (30 * arr[0]) - 15
+    debugger
+    p1 = x/2 + (30 * arr[1])-80
+    p2 = y/2 - (30 * arr[0])-20
     var r = 10;
     cd3.strokeStyle = "#006400";
     cd3.fillStyle = "Red";
@@ -127,12 +131,13 @@ function Punto(arr){
     cd3.arc(p1, p2, r,0,2*Math.PI);
     cd3.fill();
 }
+function Limpiar(){
+    cd3.clearRect(0, 0, x, y);
+    cd4.clearRect(0, 0, x, y);
+    cd5.clearRect(0, 0, x, y);
+    cd6.clearRect(0, 0, x, y);
+}
 function Hallar(a, b, c, d, e, f, x1, x2, x3, x4, arr){
-
-        debugger
-        cd3.clearRect(0, 0, x, y);
-        cd4.clearRect(0, 0, x, y);
-        cd5.clearRect(0, 0, x, y);
 
         arr[0] = (a*f-d*c) / (a*e-d*b); //valor de Y
         arr[1] = (c - b*arr[0]) / a; //valor de X
@@ -159,17 +164,17 @@ function Hallar(a, b, c, d, e, f, x1, x2, x3, x4, arr){
         else if((arr[0]) != 0)
         {
                 document.getElementById('contenido').innerHTML = "punto de interseccion = " + "(" + arr[1] + "," + arr[0] + ")";
-                p1 = x/2 + (30 * arr[1]) - 5
-                p2 = y/2 - (30 * arr[0]) - 15
-                cd2.fillText("(" + arr[1] + "," + arr[0] + ")", p1+15, p2, 200);
+                p1 = x/2 + (30 * arr[1]) - 80
+                p2 = y/2 - (30 * arr[0]) - 20
+                cd6.fillText("(" + arr[1] + "," + arr[0] + ")", p1+15, p2, 200);
 
-                px2 = x/2 + (30 * x2 ) - 5//linea 2
-                py2 = y/2 - (30 * arr[3] ) - 15
-                cd2.fillText(a + "x + " + b + "y = " + c, px2+10, py2, 200); 
+                px2 = x/2 + (30 * x2 ) - 80//linea 2
+                py2 = y/2 - (30 * arr[3] ) - 20
+                cd6.fillText(a + "x + " + b + "y = " + c, px2+10, py2, 200); 
 
-                px2 = x/2 + (30 * x4 ) - 5//linea 1
-                py2 = y/2 - (30 * (arr[5]*1) ) - 15
-                cd2.fillText(d + "x + " + e + "y = " + f, px2+10, py2, 200);
+                px2 = x/2 + (30 * x4 ) - 80//linea 1
+                py2 = y/2 - (30 * (arr[5]*1) ) - 20
+                cd6.fillText(d + "x + " + e + "y = " + f, px2+10, py2, 200);
         }
 }
 window.onload = exhibirLineas();
